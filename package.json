@@ -1,46 +1,38 @@
 {
   "name": "gexviewer",
   "version": "0.1.0",
-  "description": "hello world",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "test": "jest"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jasonk000/gexviewer.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jasonk000/gexviewer/issues"
-  },
-  "homepage": "https://github.com/jasonk000/gexviewer#readme",
-  "dependencies": {
-    "cross-fetch": "^3.1.4",
-    "csv-parse": "^5.0.3",
-    "node-fetch": "^3.1.0"
-  },
-  "devDependencies": {
-    "@babel/preset-env": "^7.16.4",
-    "jest": "^27.3.1",
-    "jest-fetch-mock": "^3.0.3",
-    "regenerator-runtime": "^0.13.9",
-    "ts-jest": "^27.0.7"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.[t|j]sx?$": "babel-jest",
-      "node_modules/csv-parse/lib/.+\\.(j|t)sx?$": "babel-jest"
-    },
-    "transformIgnorePatterns": [
-      "node_modules/(?!csv-parse/.*)"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "setupFilesAfterEnv": [
-      "./tests/setupTests.js"
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }
