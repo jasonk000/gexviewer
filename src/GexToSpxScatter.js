@@ -12,8 +12,8 @@ const GEX_MAX = 25000000000
 function GexToSpxScatter({data}) {
     const svgElement = useRef(null)
 
-    const height = 200
-    const width = 200
+    const height = 800
+    const width = 800
     const margin = {left: 100, right: 100, top: 100, bottom: 100}
 
     const renderArea = () => {
@@ -41,9 +41,9 @@ function GexToSpxScatter({data}) {
             .append('circle')
             .attr('cx', (d) => xScale(d.dix))
             .attr('cy', (d) => yScale(d.gex))
-            .attr('r', 1.5)
+            .attr('r', 3)
             .style('fill', (d) => d3.interpolateRdBu(colorScale(d.forward)))
-            .style('fill-opacity', 0.6)
+            // .style('fill-opacity', 0.6)
             .append('svg:title')
             .text((d) => JSON.stringify(d))
     }
