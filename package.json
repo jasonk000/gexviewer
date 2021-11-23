@@ -1,0 +1,46 @@
+{
+  "name": "gexviewer",
+  "version": "0.1.0",
+  "description": "hello world",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonk000/gexviewer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasonk000/gexviewer/issues"
+  },
+  "homepage": "https://github.com/jasonk000/gexviewer#readme",
+  "dependencies": {
+    "cross-fetch": "^3.1.4",
+    "csv-parse": "^5.0.3",
+    "node-fetch": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "jest": "^27.3.1",
+    "jest-fetch-mock": "^3.0.3",
+    "regenerator-runtime": "^0.13.9",
+    "ts-jest": "^27.0.7"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest",
+      "node_modules/csv-parse/lib/.+\\.(j|t)sx?$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!csv-parse/.*)"
+    ],
+    "setupFilesAfterEnv": [
+      "./tests/setupTests.js"
+    ]
+  }
+}
