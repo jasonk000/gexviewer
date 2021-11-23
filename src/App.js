@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css';
 import {GexToSpxScatter} from './GexToSpxScatter'
+import {CurrentGexDix} from './CurrentGexDix'
 
 function App() {
   const [data, setData] = useState({})
@@ -37,7 +38,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h3>Current GEX / DIX readings</h3>
-        <p>TODO</p>
+        <CurrentGexDix recentData={data.lastFive} />
 
         <h3>GEX / SPX forward scatter (no DIX)</h3>
 
