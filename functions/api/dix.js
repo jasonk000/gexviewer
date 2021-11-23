@@ -1,7 +1,7 @@
 // import {fetch, Response} from 'cross-fetch'
 // import {parse} from 'csv-parse/lib/sync'
 
-export const jsonResponse = (value, init) => {
+export const jsonResponse = (value, init = {}) => {
     return new Response(JSON.stringify(value), {
         headers: { 'Content-Type': 'application/json', ...init.headers },
         ...init,
@@ -81,6 +81,6 @@ export const handleGet = async (url) => {
 export const onRequestGet = async ({ env }) => {
     const now = Date.now()
     const url = `https://squeezemetrics.com/monitor/static/DIX.csv?_t=${now}`
-    const result = handleGet(url)
-    return jsonResponse(result, {})
+    const result = await handleGet(url)
+    return jsonResponse(result)
 }
