@@ -1,8 +1,8 @@
 // import {fetch, Response} from 'cross-fetch'
-import csvParse from 'csv-parse'
+import {parse} from '../include/csv-parse'
 
 const util = require('util')
-const parse = util.promisify(csvParse)
+const csvParse = util.promisify(parse)
 
 export const jsonResponse = (value, init = {}) => {
     return new Response(JSON.stringify(value), {
@@ -16,7 +16,7 @@ export const loadFromUrl = async (url) => {
     const bodyText = await response.text()
     
     const parseOptions = { columns: true, skip_empty_lines: true }
-    const records = await parse(bodyText, parseOptions)
+    const records = await csvParse(bodyText, parseOptions)
     
     const parsed = records.map(r => {
         return {
@@ -62,6 +62,7 @@ const gexToSpxFromLoaded = (dataWithForward, duration) => {
     return dataWithForward.map(r => {
         return {
             gex: r.gex,
+            dix: r.dix,
             forward: duration in r.forwards ? (r.forwards[duration] / r.price - 1) : null,
         }
     }).filter(r => r.forward != null)
