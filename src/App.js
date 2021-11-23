@@ -37,6 +37,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <GexToSpxScatter data={data.gexToSpxScatter}/>
+        <img src='/images/FE1sILpXEAAtCkH.png'/>
+        <img src='/images/FCqAUd5X0AMnhcL.png'/>
       </header>
     </div>
   );
