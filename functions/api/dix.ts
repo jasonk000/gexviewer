@@ -27,7 +27,7 @@ export const loadFromUrl = async (url) => {
             date: Date.parse(r.date),
         }
     })
-    
+ 
     return parsed
 }
 
@@ -61,8 +61,8 @@ const mixinForwardReturns = (data) => {
 const gexToSpxFromLoaded = (dataWithForward, duration) => {
     return dataWithForward.map(r => {
         return {
-            gex: r.gex,
-            dix: r.dix,
+            gex: Number(r.gex),
+            dix: Number(r.dix),
             forward: duration in r.forwards ? (r.forwards[duration] / r.price - 1) : null,
         }
     }).filter(r => r.forward != null)
