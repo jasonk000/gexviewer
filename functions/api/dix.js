@@ -1,5 +1,8 @@
 // import {fetch, Response} from 'cross-fetch'
-import {parse} from 'csv-parse/lib/sync'
+import csvParse from 'csv-parse'
+
+const util = require('util')
+const parse = util.promisify(csvParse)
 
 export const jsonResponse = (value, init = {}) => {
     return new Response(JSON.stringify(value), {
@@ -13,7 +16,7 @@ export const loadFromUrl = async (url) => {
     const bodyText = await response.text()
     
     const parseOptions = { columns: true, skip_empty_lines: true }
-    const records = parse(bodyText, parseOptions)
+    const records = await parse(bodyText, parseOptions)
     
     const parsed = records.map(r => {
         return {
