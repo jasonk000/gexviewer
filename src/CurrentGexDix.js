@@ -4,19 +4,23 @@ import PropTypes from 'prop-types'
 
 import './App.css';
 
+const cellStyle = {
+    padding: '10px',
+}
+
 function CurrentGexDix({recentData}) {
     const createTableRow = ({price, dix, gex, dateRaw}) =>
             <tr>
-                <td>{dateRaw}</td>
-                <td>{(dix*100).toFixed(1)}%</td>
-                <td>{(gex/1e9).toFixed(1)}bn</td>
-                <td>{(price*1).toFixed(0)}</td>
+                <td style={cellStyle}>{dateRaw}</td>
+                <td style={cellStyle}>{(dix*100).toFixed(1)}%</td>
+                <td style={cellStyle}>{(gex/1e9).toFixed(1)}bn</td>
+                <td style={cellStyle}>{(price*1).toFixed(0)}</td>
             </tr>
 
     return (
         <table>
             <thead>
-                <th>date</th><th>dix</th><th>gex</th><th>price</th>
+                <th style={cellStyle}>date</th><th style={cellStyle}>dix</th><th style={cellStyle}>gex</th><th style={cellStyle}>price</th>
             </thead>
             <tbody>
             {recentData.map(createTableRow)}

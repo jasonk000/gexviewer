@@ -9,7 +9,7 @@ const DIX_MAX = 0.48
 const GEX_MIN = -5000000000
 const GEX_MAX = 25000000000
 
-function GexToSpxScatter({data}) {
+function GexDixSpxScatter({data}) {
     const svgElement = useRef(null)
 
     const height = 800
@@ -60,7 +60,7 @@ function GexToSpxScatter({data}) {
         </svg>)
 }
 
-GexToSpxScatter.propTypes = {
+GexDixSpxScatter.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
         dix: PropTypes.number.isRequired,
         gex: PropTypes.number.isRequired,
@@ -68,4 +68,4 @@ GexToSpxScatter.propTypes = {
     }))
 }
 
-export {GexToSpxScatter}
+export {GexDixSpxScatter}
