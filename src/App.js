@@ -41,7 +41,7 @@ function App() {
         <h3>GEX / SPX forward scatter</h3>
         <GexSpxScatter data={data.gexToSpxScatter} recentData={data.lastFive}/>
 
-        <h3>Current GEX / DIX readings</h3>
+        <h3>Recent GEX / DIX readings</h3>
         <CurrentGexDix recentData={data.lastFive} />
 
         <h3>20-day return curve for ten closest readings</h3>
