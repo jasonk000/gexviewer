@@ -31,10 +31,10 @@ function GexDixSpxScatter({data, recentData}) {
 
         plotAreaG.append('g')
             .attr('transform', `translate(0,${height})`)
-            .call(d3.axisBottom(xScale))
+            .call(d3.axisBottom(xScale).tickFormat(v => `${(v*100).toFixed(0)}%`))
 
         plotAreaG.append('g')
-            .call(d3.axisLeft(yScale))
+            .call(d3.axisLeft(yScale).tickFormat(v => `${(v/1000000000).toFixed(0)} bn`))
 
         plotAreaG.append('g')
             .selectAll()
