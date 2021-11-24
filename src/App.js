@@ -48,7 +48,7 @@ function App() {
         <p>TODO</p>
 
         <h3>GEX/DIX 20d SPX Scatter</h3>
-        <GexDixSpxScatter data={data.gexToSpxScatter}/>
+        <GexDixSpxScatter data={data.gexToSpxScatter} recentData={data.lastFive}/>
 
         <h3>Squeezemetrics images</h3>
         <img src='/images/FE1sILpXEAAtCkH.png' alt='dix 5dma / gex to 1-month spx return'/>

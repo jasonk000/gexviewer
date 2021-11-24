@@ -9,8 +9,9 @@ const DIX_MAX = 0.48
 const GEX_MIN = -5000000000
 const GEX_MAX = 25000000000
 
-function GexDixSpxScatter({data}) {
-    const svgElement = useRef(null)
+function GexDixSpxScatter({data, recentData}) {
+    const plotArea = useRef(null)
+    const recentLineArea = useRef(null)
 
     const height = 800
     const width = 800
@@ -24,17 +25,18 @@ function GexDixSpxScatter({data}) {
         const xScale = d3.scaleLinear().domain([DIX_MIN, DIX_MAX]).range([0, width])
         const yScale = d3.scaleLinear().domain([GEX_MIN, GEX_MAX]).range([height, 0])
         const colorScale = d3.scaleLinear().domain([-0.03, 0, 0.06]).range([0, 0.5, 1])
+        const recentColorScale = d3.scaleLinear().domain([0, recentData.length]).range([0, 1])
 
-        const svg = d3.select(svgElement.current)
+        const plotAreaG = d3.select(plotArea.current)
 
-        svg.append('g')
+        plotAreaG.append('g')
             .attr('transform', `translate(0,${height})`)
             .call(d3.axisBottom(xScale))
 
-        svg.append('g')
+        plotAreaG.append('g')
             .call(d3.axisLeft(yScale))
 
-        svg.append('g')
+        plotAreaG.append('g')
             .selectAll()
             .data(renderData)
             .enter()
@@ -46,17 +48,28 @@ function GexDixSpxScatter({data}) {
             // .style('fill-opacity', 0.6)
             .append('svg:title')
             .text((d) => JSON.stringify(d))
+
+        const recentLineAreaG = d3.select(recentLineArea.current)
+
+        recentLineAreaG.append('path')
+            .datum(recentData)
+            .attr('opacity', 1)
+            .attr('fill', 'none')
+            .attr('stroke', 'rgb(21, 127, 60)')
+            .attr('stroke-width', '4px')
+            .attr('d', d3.line().x(d => Math.round(xScale(d.dix))).y(d => Math.round(yScale(d.gex))))
     }
 
     useEffect(() => {
-        if (svgElement.current && data.length > 0) {
+        if (plotArea.current && data.length > 0) {
             renderArea()
         }
-    }, [svgElement, data])
+    }, [plotArea, data, recentData])
 
     return (
-        <svg  width={width+margin.left+margin.right} height={height+margin.top+margin.bottom}>
-            <g ref={svgElement} transform={`translate(${margin.left}, ${margin.top})`}/>
+        <svg width={width+margin.left+margin.right} height={height+margin.top+margin.bottom}>
+            <g ref={plotArea} transform={`translate(${margin.left}, ${margin.top})`}/>
+            <g ref={recentLineArea} transform={`translate(${margin.left}, ${margin.top})`}/>
         </svg>)
 }
 
@@ -65,6 +78,12 @@ GexDixSpxScatter.propTypes = {
         dix: PropTypes.number.isRequired,
         gex: PropTypes.number.isRequired,
         forward: PropTypes.number.isRequired,
+    })),
+    recentData: PropTypes.arrayOf(PropTypes.shape({
+        price: PropTypes.number.isRequired,
+        dix: PropTypes.number.isRequired,
+        gex: PropTypes.number.isRequired,
+        dateRaw: PropTypes.string.isRequired,
     }))
 }
 
