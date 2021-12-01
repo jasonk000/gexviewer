@@ -7,14 +7,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App p {
+  margin-right: auto;
+  margin-left: auto;
   margin-top: 0px;
-}
-
-.App h4 {
-  margin-top: 0px;
+  margin-right: 0px;
 }
 
 div .App table {
@@ -38,7 +34,7 @@ div .App table {
 }
 
 .App img {
-  max-width: 80%;
+  max-width: 90%;
   margin: auto;
 }
 
