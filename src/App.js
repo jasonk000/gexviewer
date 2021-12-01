@@ -27,39 +27,35 @@ function App() {
 
   if (!data || !data.gexToSpxScatter) {
     return <div className="App">
-      <header className="App-header">
-        <p>
+      <p>
           Loading ...
-        </p>
-      </header>
+      </p>
     </div>
   }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h4>GEX / SPX forward scatter</h4>
-        <GexSpxScatter data={data.gexToSpxScatter} recentData={data.lastFive}/>
+      <h4>GEX / SPX forward scatter</h4>
+      <GexSpxScatter data={data.gexToSpxScatter} recentData={data.lastFive}/>
 
-        <h4>Recent GEX / DIX readings</h4>
-        <CurrentGexDix recentData={data.lastFive} />
+      <h4>Recent GEX / DIX readings</h4>
+      <CurrentGexDix recentData={data.lastFive} />
 
-        <h4>20-day return curve for ten closest readings</h4>
-        <p>TODO</p>
+      <h4>20-day return curve for ten closest readings</h4>
+      <p>TODO</p>
 
-        <h4>GEX/DIX 20d SPX Scatter</h4>
-        <GexDixSpxScatter data={data.gexToSpxScatter} recentData={data.lastFive}/>
+      <h4>GEX/DIX 20d SPX Scatter</h4>
+      <GexDixSpxScatter data={data.gexToSpxScatter} recentData={data.lastFive}/>
 
-        <h4>Squeezemetrics images</h4>
-        <img src='/images/FE1sILpXEAAtCkH.png' alt='dix 5dma / gex to 1-month spx return'/>
-        <img src='/images/FCqAUd5X0AMnhcL.png' alt='dix/gex to 1-month spx return'/>
+      <h4>Squeezemetrics images</h4>
+      <img src='/images/FE1sILpXEAAtCkH.png' alt='dix 5dma / gex to 1-month spx return'/>
+      <img src='/images/FCqAUd5X0AMnhcL.png' alt='dix/gex to 1-month spx return'/>
 
-        <h4>Thinking</h4>
-        <ul>
-          <li>Research: what happens if GEX / DIX is 5DMA'd before shoving into the chart?</li>
-          <li>Overlay last-five days on GEX/DIX scatter</li>
-        </ul>
-      </header>
+      <h4>Thinking</h4>
+      <ul>
+        <li>Research: what happens if GEX / DIX is 5DMA'd before shoving into the chart?</li>
+        <li>Overlay last-five days on GEX/DIX scatter</li>
+      </ul>
     </div>
   );
 }
