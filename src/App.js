@@ -17,11 +17,9 @@ function App() {
 
   if (error) {
     return <div className="App">
-      <header className="App-header">
-        <p>
-          Error loading: {error}
-        </p>
-      </header>
+      <p>
+        Error loading: {error}
+      </p>
     </div>
   }
 
