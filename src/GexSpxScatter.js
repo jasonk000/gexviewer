@@ -16,10 +16,10 @@ function GexSpxScatter({data, recentData}) {
 
     const {width} = useWindowDimensions()
 
-    const chartWidth = Math.min((0.8 * width), 1200)
-    const chartHeight = (chartWidth / 2)
+    const margin = {left: 50, right: 50, top: 100, bottom: 100}
 
-    const margin = {left: 100, right: 100, top: 100, bottom: 100}
+    const chartWidth = Math.min((0.9 * (width - margin.left - margin.right)), 1200)
+    const chartHeight = (chartWidth / 2)
 
     const renderArea = () => {
         const renderData = data

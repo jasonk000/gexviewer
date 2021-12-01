@@ -14,10 +14,10 @@ function GexDixSpxScatter({data, recentData}) {
     const plotArea = useRef(null)
     const recentLineArea = useRef(null)
 
-    const margin = {left: 100, right: 100, top: 100, bottom: 100}
+    const margin = {left: 50, right: 50, top: 100, bottom: 100}
 
     const {width} = useWindowDimensions()
-    const chartWidth = Math.min((0.8 * width), 1200)
+    const chartWidth = Math.min((0.9 * (width - margin.left - margin.right)), 1200)
     const chartHeight = chartWidth
 
     const renderArea = () => {
