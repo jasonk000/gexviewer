@@ -49,6 +49,7 @@ function App() {
 
       <h4>Squeezemetrics images</h4>
       <img src='/images/FE1sILpXEAAtCkH.png' alt='dix 5dma / gex to 1-month spx return'/>
+      <p/>
       <img src='/images/FCqAUd5X0AMnhcL.png' alt='dix/gex to 1-month spx return'/>
 
       <h4>Thinking</h4>
