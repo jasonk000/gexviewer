@@ -19,9 +19,9 @@ export const loadFromUrl = async (url) => {
     
     const parsed = records.map(r => {
         return {
-            price: r.price,
-            dix: r.dix,
-            gex: r.gex,
+            price: Number(r.price),
+            dix: Number(r.dix),
+            gex: Number(r.gex),
             dateRaw: r.date,
             date: Date.parse(r.date),
         }
@@ -60,8 +60,8 @@ const mixinForwardReturns = (data) => {
 const gexToSpxFromLoaded = (dataWithForward, duration) => {
     return dataWithForward.map(r => {
         return {
-            gex: Number(r.gex),
-            dix: Number(r.dix),
+            gex: r.gex,
+            dix: r.dix,
             forward: duration in r.forwards ? (r.forwards[duration] / r.price - 1) : null,
         }
     }).filter(r => r.forward != null)
