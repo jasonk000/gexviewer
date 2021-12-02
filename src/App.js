@@ -23,7 +23,7 @@ function App() {
     </div>
   }
 
-  if (!data || !data.gexToSpxScatter) {
+  if (!data || !data.gexToSpxScatter1) {
     return <div className="App">
       <p>
           Loading ...
@@ -33,8 +33,11 @@ function App() {
 
   return (
     <div className="App">
-      <h4>GEX / SPX forward scatter</h4>
-      <GexSpxScatter data={data.gexToSpxScatter} recentData={data.lastFive}/>
+      <h4>GEX / SPX forward scatter 1d</h4>
+      <GexSpxScatter data={data.gexToSpxScatter1} recentData={data.lastFive}/>
+
+      <h4>GEX / SPX forward scatter 20d</h4>
+      <GexSpxScatter data={data.gexToSpxScatter20} recentData={data.lastFive}/>
 
       <h4>Recent GEX / DIX readings</h4>
       <CurrentGexDix recentData={data.lastFive} />
@@ -42,8 +45,11 @@ function App() {
       <h4>20-day return curve for ten closest readings</h4>
       <p>TODO</p>
 
+      <h4>GEX/DIX 1d SPX Scatter</h4>
+      <GexDixSpxScatter data={data.gexToSpxScatter1} recentData={data.lastFive}/>
+
       <h4>GEX/DIX 20d SPX Scatter</h4>
-      <GexDixSpxScatter data={data.gexToSpxScatter} recentData={data.lastFive}/>
+      <GexDixSpxScatter data={data.gexToSpxScatter20} recentData={data.lastFive}/>
 
       <h4>Squeezemetrics images</h4>
       <img src='/images/FE1sILpXEAAtCkH.png' alt='dix 5dma / gex to 1-month spx return'/>

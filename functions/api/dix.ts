@@ -72,11 +72,13 @@ export const handleGet = async (url) => {
 
     const dataWithForward = mixinForwardReturns(data)
     const lastFive = lastFiveFromLoaded(dataWithForward)
-    const gexToSpxScatter = gexToSpxFromLoaded(dataWithForward, 1)
+    const gexToSpxScatter1 = gexToSpxFromLoaded(dataWithForward, 1)
+    const gexToSpxScatter20 = gexToSpxFromLoaded(dataWithForward, 20)
 
     return {
         lastFive,
-        gexToSpxScatter,
+        gexToSpxScatter1,
+        gexToSpxScatter20,
     }
 }
 

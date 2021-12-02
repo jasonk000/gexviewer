@@ -7,8 +7,8 @@ import './App.css';
 
 const GEX_MIN = -5000000000
 const GEX_MAX = 25000000000
-const FORWARD_MIN = -0.05
-const FORWARD_MAX = 0.05
+const FORWARD_MIN = -0.1
+const FORWARD_MAX = 0.1
 
 function GexSpxScatter({data, recentData}) {
     const plotArea = useRef(null)
