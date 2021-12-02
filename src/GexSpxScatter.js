@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useWindowDimensions } from './hooks'
 import * as d3 from 'd3'
 import PropTypes from 'prop-types'

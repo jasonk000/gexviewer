@@ -1,4 +1,3 @@
-// import {fetch, Response} from 'cross-fetch'
 import {parse} from '../include/csv-parse'
 
 const util = require('util')

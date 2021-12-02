@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useWindowDimensions } from './hooks'
 import * as d3 from 'd3'
 import PropTypes from 'prop-types'
@@ -28,7 +28,6 @@ function GexDixSpxScatter({data, recentData}) {
         const xScale = d3.scaleLinear().domain([DIX_MIN, DIX_MAX]).range([0, chartWidth])
         const yScale = d3.scaleLinear().domain([GEX_MIN, GEX_MAX]).range([chartHeight, 0])
         const colorScale = d3.scaleLinear().domain([-0.03, 0, 0.06]).range([0, 0.5, 1])
-        const recentColorScale = d3.scaleLinear().domain([0, recentData.length]).range([0, 1])
 
         const plotAreaG = d3.select(plotArea.current)
 
