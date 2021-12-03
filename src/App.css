@@ -38,6 +38,10 @@ div .App table {
   margin: auto;
 }
 
+.App h4 {
+  margin-top: 0px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
