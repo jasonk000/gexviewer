@@ -17,17 +17,17 @@ function App() {
 
   if (error) {
     return <div className="App">
-      <p>
+      <h4>
         Error loading: {error}
-      </p>
+      </h4>
     </div>
   }
 
   if (!data || !data.gexToSpxScatter1) {
     return <div className="App">
-      <p>
+      <h4>
           Loading ...
-      </p>
+      </h4>
     </div>
   }
 
