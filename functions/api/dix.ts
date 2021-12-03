@@ -1,4 +1,5 @@
 import {parse} from '../include/csv-parse'
+import * as d3 from 'd3'
 
 const util = require('util')
 const csvParse = util.promisify(parse)
@@ -30,10 +31,10 @@ export const loadFromUrl = async (url) => {
     return parsed
 }
 
-const lastFiveFromLoaded = (data) => {
+const lastNFromLoaded = (data, n) => {
     const records = [...data]
     records.sort((a, b) => a.date - b.date)
-    return records.slice(-5)
+    return records.slice(-n)
 }
 
 const mixinForwardReturns = (data) => {
@@ -57,6 +58,29 @@ const mixinForwardReturns = (data) => {
     return withForward
 }
 
+const findNClosest = (dataWithForward, { gex, dix }, n) => {
+    const DIX_MIN = 0.33
+    const DIX_MAX = 0.48
+    const GEX_MIN = -5000000000
+    const GEX_MAX = 25000000000
+
+    const dixScale = d3.scaleLinear().domain([DIX_MIN, DIX_MAX]).range([0, 100])
+    const gexScale = d3.scaleLinear().domain([GEX_MIN, GEX_MAX]).range([100, 0])
+
+    // find the distance to all of the points
+    const distanceFrom = (element) => {
+        const dDix = dixScale(element.dix) - dixScale(dix)
+        const dGex = gexScale(element.gex) - gexScale(gex)
+        return Math.sqrt(dDix*dDix + dGex*dGex)
+    }
+
+    // sort by distance
+    return [...dataWithForward]
+        .sort((a, b) => distanceFrom(a) - distanceFrom(b))
+        .reverse()
+        .slice(-n)
+}
+
 const gexToSpxFromLoaded = (dataWithForward, duration) => {
     return dataWithForward.map(r => {
         return {
@@ -71,14 +95,18 @@ export const handleGet = async (url) => {
     const data = await loadFromUrl(url)
 
     const dataWithForward = mixinForwardReturns(data)
-    const lastFive = lastFiveFromLoaded(dataWithForward)
+    const lastFive = lastNFromLoaded(dataWithForward, 5)
+    const lastElement = lastNFromLoaded(dataWithForward, 1)
     const gexToSpxScatter1 = gexToSpxFromLoaded(dataWithForward, 1)
     const gexToSpxScatter20 = gexToSpxFromLoaded(dataWithForward, 20)
+
+    const tenClosestToLatest = findNClosest(dataWithForward, lastElement[0], 10)
 
     return {
         lastFive,
         gexToSpxScatter1,
         gexToSpxScatter20,
+        tenClosestToLatest,
     }
 }
 
