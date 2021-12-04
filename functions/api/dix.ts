@@ -58,7 +58,7 @@ const mixinForwardReturns = (data) => {
     return withForward
 }
 
-const findNClosest = (dataWithForward, { gex, dix }, n) => {
+const findNClosest = (dataWithForward, { gex, dix }, n: number) => {
     const DIX_MIN = 0.33
     const DIX_MAX = 0.48
     const GEX_MIN = -5000000000
@@ -77,8 +77,7 @@ const findNClosest = (dataWithForward, { gex, dix }, n) => {
     // sort by distance
     return [...dataWithForward]
         .sort((a, b) => distanceFrom(a) - distanceFrom(b))
-        .reverse()
-        .slice(-n)
+        .slice(0, n)
 }
 
 const gexToSpxFromLoaded = (dataWithForward, duration) => {
