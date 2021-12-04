@@ -3,6 +3,7 @@ import './App.css';
 import {GexDixSpxScatter} from './GexDixSpxScatter'
 import {GexSpxScatter} from './GexSpxScatter'
 import {CurrentGexDix} from './CurrentGexDix'
+import {ForwardCurve} from './ForwardCurve'
 
 function App() {
   const [data, setData] = useState({})
@@ -33,6 +34,9 @@ function App() {
 
   return (
     <div className="App">
+      <h4>20-day return curve for DIX/GEX closest to today's values</h4>
+      <ForwardCurve data={data.tenClosestToLatest} forwardDays={20} />
+
       <h4>GEX / SPX forward scatter 1d</h4>
       <GexSpxScatter data={data.gexToSpxScatter1} recentData={data.lastFive}/>
 
@@ -41,9 +45,6 @@ function App() {
 
       <h4>Recent GEX / DIX readings</h4>
       <CurrentGexDix recentData={data.lastFive} />
-
-      <h4>20-day return curve for ten closest readings</h4>
-      <p>TODO</p>
 
       <h4>GEX/DIX 1d SPX Scatter</h4>
       <GexDixSpxScatter data={data.gexToSpxScatter1} recentData={data.lastFive}/>

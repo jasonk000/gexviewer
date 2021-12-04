@@ -62,7 +62,7 @@ function GexDixSpxScatter({data, recentData}) {
             .attr('opacity', 1)
             .attr('fill', 'none')
             .attr('stroke', 'rgb(21, 127, 60)')
-            .attr('stroke-width', '4px')
+            .attr('stroke-width', '3px')
             .attr('d', d3.line().x(d => Math.round(xScale(d.dix))).y(d => Math.round(yScale(d.gex))))
     }
 
