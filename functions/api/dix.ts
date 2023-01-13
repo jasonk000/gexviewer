@@ -106,6 +106,7 @@ export const handleGet = async (url) => {
         gexToSpxScatter1,
         gexToSpxScatter20,
         tenClosestToLatest,
+        "hello": "world",
     }
 }
 
